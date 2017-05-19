@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Bejelentkezés</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="../css/bootstrap.css" rel="stylesheet" type="text/css"/>
+        <link href="../css/site.css" rel="stylesheet" type="text/css"/>
+        <script src="../js/own.js" type="text/javascript"></script>
+        <script src="../js/jquery-3.1.1.min.js" type="text/javascript"></script>
+        <script src="../js/angular.min.js" type="text/javascript"></script>
+
+        <script>
+
+            $(document).ready(function () {
+                var menucsekk = false;
+
+                $("#ck-button").click(function () {
+                    if (menucsekk === false)
+                    {
+
+                        $("#menuItems").animate({"left": "0px"}, "slow");
+                        $("#ck-button").animate({"left": "220px"}, "slow");
+
+                        menucsekk = true;
+
+                    } else
+                    {
+
+                        $("#menuItems").animate({"left": "-200px"}, "slow");
+                        $("#ck-button").animate({"left": "20px"}, "slow");
+
+                        menucsekk = false;
+                    }
+
+                    setTimeout(function () {
+                        $(triangle1).dequeue("a");
+                    }, 0);
+
+                    setTimeout(function () {
+                        $(triangle2).dequeue("a");
+                    }, 0);
+                });
+            });
+        </script>
+
+
+        <link href="https://fonts.googleapis.com/css?family=Muli:300|Suez+One" rel="stylesheet">
+
+    </head>
+<body ng-app="humbak" ng-controller="tibiatya.user.controller">
+
+    <div id="BG">
+        <div id="ck-button">   
+            <div id="stuff">
+                <div id="rowone" class="row"></div>
+                <div id="rowtwo" class="row"></div>
+                <div id="rowthree" class="row"></div>
+            </div>  
+        </div>
+
+        <div id="menuItems">
+            <ul id="navacska">
+                <li ng-if="user.LoggedIn"><a href="/humbak/html/profile.html" id="focused">Profil</a></li>
+                <li ng-if="!user.LoggedIn"><a href="/humbak/auth/registration.html" id="menu_reg">Regisztráció</a></li>
+                <li ng-if="user.LoggedIn"><a href="/humbak/html/reservation-form.html" id="menu_res">Foglalás</a></li>
+                <li><a href="/humbak/italok/index.html" id="ddds">Itallap</a></li>
+            </ul>
+
+
+        </div>
+
+        <div id="FG2">
+            <div id="Title2"> Bejelentkezés 	</div>
+            <div id='form_res_BG_login'>
+
+                <form class="form-horizontal formDesign" method="POST" action="/humbak/user/login">
+                    <fieldset>
+
+                        <!-- Form Name -->
+
+
+                        <!-- Select Basic -->
+
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-xs-4 col-md-4 control-label formLabel" for="textinput">Felhasználó</label>  
+                            <div class="col-xs-4 col-md-4">
+                                <input id="textinput" name="username" type="text" placeholder="" class="form-control input-md">
+
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-xs-4 col-md-4 control-label formLabel" for="textinput">Jelszó</label>  
+                            <div class="col-xs-4 col-md-4">
+                                <input id="textinput" name="password" type="password" placeholder="" class="form-control input-md">
+
+                            </div>
+                        </div>
+
+                        <!-- Button -->
+                        <div class="form-group">
+                            <label class="col-xs-4 col-md-4 control-label" for="submit"></label>
+                            <div class="col-xs-4 col-md-4">
+                                <button id="submit" name="submit" class="btn btn-primary formButton">Mehet</button>
+                            </div>
+                        </div>
+
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
